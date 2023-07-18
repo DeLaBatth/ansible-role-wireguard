@@ -1,0 +1,38 @@
+---
+# WireGuard server configuration tasks
+
+- name: Generate WireGuard key pair
+  ansible.builtin.shell: 
+    cmd: wg genkey | tee privatekey | wg pubkey > /etc/wireguard/keys/publickey
+    chdir: /etc/wireguard/keys
+  register: command_output
+  failed_when: command_output.rc != 0
+
+- name: Generate server configuration
+  ansible.builtin.template:
+    src: wg0.conf.j2
+    dest: /etc/wireguard/wireguard.conf
+    owner: root
+    group: root
+    mode: '0600'
+  notify: XXX
+
+- name: Get server Private Key
+  ansible.builtin.command: cat /etc/wireguard/keys/privatekey
+  register: private_key
+
+- name: Add server PrivateKey to config file
+  ansible.builtin.lineinfile:
+    path: /etc/wireguard/wireguard.conf
+    regexp: "^PrivateKey"
+    line: "PrivateKey  = {{ private_key.stdout }}"
+
+- name: Get server Public Key
+  ansible.builtin.command: cat /etc/wireguard/keys/publickey
+  register: public_key
+
+- name: Add server PublicKey to config file
+  ansible.builtin.lineinfile:
+    path: /etc/wireguard/wireguard.conf
+    regexp: "^PublicKey"
+    line: "PublicKey  = {{ public_key.stdout }}"

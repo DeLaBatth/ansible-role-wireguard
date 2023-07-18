@@ -1,0 +1,10 @@
+---
+# tasks file for wireguard
+- hosts: all
+  tasks:
+    - include: install.yml
+    - include: configure.yml
+    - include: start.yml
+# - ansible.builtin.include_tasks: install.yml
+# - ansible.builtin.include_tasks: configure.yml
+# - ansible.builtin.include_tasks: start.yml

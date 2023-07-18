@@ -1,0 +1,5 @@
+---
+# Start WireGuard service
+
+- name: Starting WireGuard service
+  ansible.builtin.command: wg-quick down wg0 || wg-quick up wg0 && systemctl enable wg-quick@wg0.service

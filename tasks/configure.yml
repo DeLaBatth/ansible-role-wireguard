@@ -15,7 +15,6 @@
     owner: root
     group: root
     mode: '0600'
-  notify: XXX
 
 - name: Get server Private Key
   ansible.builtin.command: cat /etc/wireguard/keys/privatekey

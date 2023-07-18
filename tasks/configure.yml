@@ -22,16 +22,6 @@
 
 - name: Add server PrivateKey to config file
   ansible.builtin.lineinfile:
-    path: /etc/wireguard/wireguard.conf
+    path: /etc/wireguard/wg0.conf
     regexp: "^PrivateKey"
     line: "PrivateKey = {{ private_key.stdout }}"
-
-- name: Get server Public Key
-  ansible.builtin.command: cat /etc/wireguard/keys/publickey
-  register: public_key
-
-- name: Add server PublicKey to config file
-  ansible.builtin.lineinfile:
-    path: /etc/wireguard/wireguard.conf
-    regexp: "^PublicKey"
-    line: "PublicKey = {{ public_key.stdout }}"

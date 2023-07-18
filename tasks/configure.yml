@@ -24,7 +24,7 @@
   ansible.builtin.lineinfile:
     path: /etc/wireguard/wireguard.conf
     regexp: "^PrivateKey"
-    line: "PrivateKey  = {{ private_key.stdout }}"
+    line: "PrivateKey = {{ private_key.stdout }}"
 
 - name: Get server Public Key
   ansible.builtin.command: cat /etc/wireguard/keys/publickey
@@ -34,4 +34,4 @@
   ansible.builtin.lineinfile:
     path: /etc/wireguard/wireguard.conf
     regexp: "^PublicKey"
-    line: "PublicKey  = {{ public_key.stdout }}"
+    line: "PublicKey = {{ public_key.stdout }}"

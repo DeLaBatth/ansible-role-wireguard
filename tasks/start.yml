@@ -18,13 +18,13 @@
 
 - name: Stoping WireGuard service
   ansible.builtin.shell:
-    cmd: wg-quick down wg0
+    cmd: wg-quick down "{{ wireguard_interface }}"
   #when: ('wg0' in wg_output.stdout_lines[0])
   when: wg_output.stdout != ""
 
 - name: Starting WireGuard service
   ansible.builtin.shell:
-    cmd: wg-quick up wg0 && systemctl enable wg-quick@wg0.service
+    cmd: wg-quick up {{ wireguard_interface }}" && systemctl enable wg-quick@wg0.service
 
 - name: Show WireGuard Interfaces
   ansible.builtin.shell:

@@ -8,6 +8,7 @@
 
 - debug:
     msg: "{{ wg_output.stdout_lines[0] }}"
+  ignore_errors: True
 
 - name: Generate WireGuard key pair
   ansible.builtin.shell: 

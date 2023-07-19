@@ -24,7 +24,7 @@
 
 - name: Starting WireGuard service
   ansible.builtin.shell:
-    cmd: wg-quick up {{ wireguard_interface }}" && systemctl enable wg-quick@wg0.service
+    cmd: wg-quick up "{{ wireguard_interface }}" && systemctl enable wg-quick@wg0.service
 
 - name: Show WireGuard Interfaces
   ansible.builtin.shell:

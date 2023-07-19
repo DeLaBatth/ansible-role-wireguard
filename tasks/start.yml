@@ -11,15 +11,19 @@
 - debug:
     msg: "{{ wg_output }}"
 
-- name: Restart WireGuard service
+# - name: Restart WireGuard service
+#   ansible.builtin.shell:
+#     cmd: systemctl restart wg-quick@wg0.service
+#   when: wg_output.stdout != ""
+
+- name: Stoping WireGuard service
   ansible.builtin.shell:
-    cmd: systemctl restart wg-quick@wg0.service
-  when: wg_output.stdout != ""
+    cmd: wg-quick down wg0
+  when: ('wg0' in wg_output.stdout_lines[0])
 
 - name: Starting WireGuard service
   ansible.builtin.shell:
     cmd: wg-quick up wg0 && systemctl enable wg-quick@wg0.service
-  when: wg_output.stdout == ""
 
 - name: Show WireGuard Interfaces
   ansible.builtin.shell:

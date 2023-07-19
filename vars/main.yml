@@ -2,3 +2,4 @@
 # vars file for wireguard
 
 wireguard_directory: "/etc/wireguard/keys"
+wireguard_interface: wg0

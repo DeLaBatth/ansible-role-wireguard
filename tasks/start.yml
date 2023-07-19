@@ -1,7 +1,5 @@
 ---
 # Start WireGuard service
-# Si "wg show" sort un résultat, alors restart le service ou down + up
-# Sinon juste start
 
 - name: Show WireGuard Interfaces
   ansible.builtin.shell:
@@ -10,8 +8,9 @@
 
 - debug:
     msg: "{{ wg_output }}"
+  ignore_errors: True
 
-# - name: Restart WireGuard service
+# - name: Restart WireGuard service if adding peers
 #   ansible.builtin.shell:
 #     cmd: systemctl restart wg-quick@wg0.service
 #   when: wg_output.stdout != ""
@@ -25,7 +24,3 @@
 - name: Starting WireGuard service
   ansible.builtin.shell:
     cmd: wg-quick up "{{ wireguard_interface }}" && systemctl enable wg-quick@wg0.service
-
-- name: Show WireGuard Interfaces
-  ansible.builtin.shell:
-    cmd: wg show

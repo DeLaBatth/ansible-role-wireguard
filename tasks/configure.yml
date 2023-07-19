@@ -15,7 +15,7 @@
     chdir: "{{ wireguard_directory }}"
   register: command_output
   failed_when: command_output.rc != 0
-  when: wg0 not in "{{ wg_output.stdout_lines[0] }}"
+  when: 'wg0' not in wg_output.stdout_lines[0]
 
 - name: Generate server configuration
   ansible.builtin.template:

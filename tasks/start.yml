@@ -8,7 +8,7 @@
     cmd: wg show
   register: wg_output
 
-debug:
+- debug:
   msg: "{{ wg_output }}"
 
 - name: Starting WireGuard service

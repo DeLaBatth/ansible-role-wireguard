@@ -15,9 +15,9 @@
     state: present
     reload: true
 
-- name: Create "/etc/wireguard/keys" directory
+- name: Create "{{ wireguard_directory }}" directory
   ansible.builtin.file:
-    path: /etc/wireguard/keys
+    path: "{{ wireguard_directory }}"
     state: directory
     owner: root
     group: root

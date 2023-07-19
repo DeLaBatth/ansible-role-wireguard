@@ -1,2 +1,4 @@
 ---
 # vars file for wireguard
+
+wireguard_directory: "/etc/wireguard/keys"

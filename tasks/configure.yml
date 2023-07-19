@@ -3,8 +3,8 @@
 
 - name: Generate WireGuard key pair
   ansible.builtin.shell: 
-    cmd: wg genkey | tee privatekey | wg pubkey > /etc/wireguard/keys/publickey
-    chdir: /etc/wireguard/keys
+    cmd: wg genkey | tee privatekey | wg pubkey > {{ wireguard_directory }}/publickey
+    chdir: "{{ wireguard_directory }}"
   register: command_output
   failed_when: command_output.rc != 0
 
@@ -17,7 +17,7 @@
     mode: '0600'
 
 - name: Get server Private Key
-  ansible.builtin.command: cat /etc/wireguard/keys/privatekey
+  ansible.builtin.command: cat {{ wireguard_directory }}/privatekey
   register: private_key
 
 - name: Add server PrivateKey to config file

@@ -19,7 +19,8 @@
 - name: Stoping WireGuard service
   ansible.builtin.shell:
     cmd: wg-quick down wg0
-  when: ('wg0' in wg_output.stdout_lines[0])
+  #when: ('wg0' in wg_output.stdout_lines[0])
+  when: wg_output.msg != ""
 
 - name: Starting WireGuard service
   ansible.builtin.shell:

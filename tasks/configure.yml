@@ -7,7 +7,7 @@
   register: wg_output
 
 - debug:
-    msg: "{{ wg_output.stdout_lines[0] }}"
+    msg: "{{ wg_output.stdout_lines[0].interface }}"
 
 # - name: Generate WireGuard key pair
 #   ansible.builtin.shell: 

@@ -4,7 +4,7 @@ on: [push]
 jobs:
   build:
     name: Ansible Lint # Naming the build is important to use it as a status check
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
 
     steps:
       # Important: This sets up your GITHUB_WORKSPACE environment variable

@@ -6,9 +6,9 @@
     cmd: wg show
   register: wg_output
 
-- ansible.builtin.debug:
-    msg: "{{ wg_output }}"
-  ignore_errors: true
+# - ansible.builtin.debug:
+#     msg: "{{ wg_output }}"
+#   ignore_errors: true
 
 - name: Generate WireGuard key pair
   ansible.builtin.shell:

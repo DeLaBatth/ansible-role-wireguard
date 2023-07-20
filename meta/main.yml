@@ -1,6 +1,9 @@
 ---
+dependencies: []
+
 galaxy_info:
-  author: wireguard
+  role_name: wireguard
+  author: Delabatth
   description: Install WireGuard VPN server
 
   license: license (BSD, MIT)
@@ -15,5 +18,3 @@ galaxy_info:
   galaxy_tags: []
     - wireguard
     - vpn
-
-dependencies: []

@@ -1,14 +1,15 @@
 ---
 # Start WireGuard service
+# when: ('wg0' in wg_output.stdout_lines[0])
 
 - name: Show WireGuard Interfaces
   ansible.builtin.shell:
     cmd: wg show
   register: wg_output
 
-- debug:
+- ansible.builtin.debug:
     msg: "{{ wg_output }}"
-  ignore_errors: True
+  ignore_errors: true
 
 # - name: Restart WireGuard service if adding peers
 #   ansible.builtin.shell:
@@ -18,7 +19,6 @@
 - name: Stoping WireGuard service
   ansible.builtin.shell:
     cmd: wg-quick down "{{ wireguard_interface }}"
-  #when: ('wg0' in wg_output.stdout_lines[0])
   when: wg_output.stdout != ""
 
 - name: Starting WireGuard service

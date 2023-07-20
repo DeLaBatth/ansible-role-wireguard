@@ -3,7 +3,7 @@
 
 - name: Install WireGuard package
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
     name: wireguard
     state: present
 
@@ -21,4 +21,4 @@
     state: directory
     owner: root
     group: root
-    mode: 0700
+    mode: '0700'

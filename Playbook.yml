@@ -1,3 +1,4 @@
-- hosts: all
+- name: Playbook for install WireGuard VPN server
+  hosts: all
   roles:
     - { role: delabatth.ansible_role_wireguard }

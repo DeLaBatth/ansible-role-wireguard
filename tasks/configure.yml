@@ -6,12 +6,12 @@
     cmd: wg show
   register: wg_output
 
-- debug:
+- ansible.builtin.debug:
     msg: "{{ wg_output }}"
-  ignore_errors: True
+  ignore_errors: true
 
 - name: Generate WireGuard key pair
-  ansible.builtin.shell: 
+  ansible.builtin.shell:
     cmd: wg genkey | tee privatekey | wg pubkey > {{ wireguard_directory }}/publickey
     chdir: "{{ wireguard_directory }}"
   register: command_output
@@ -21,7 +21,7 @@
 - name: Generate server configuration
   ansible.builtin.template:
     src: wireguard.conf.j2
-    dest: /etc/wireguard/"{{wireguard_interface}}".conf
+    dest: /etc/wireguard/"{{ wireguard_interface }}".conf
     owner: root
     group: root
     mode: '0600'

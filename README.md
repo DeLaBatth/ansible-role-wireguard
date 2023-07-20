@@ -5,6 +5,7 @@ A brief description of the role goes here.
 
 TO DO: 
 - add tasks en fonction de l'os (Debian, Ubuntu, Alma Linux)
+- Github actions to ansible lint
 
 Requirements
 ------------

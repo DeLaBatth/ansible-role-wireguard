@@ -15,7 +15,7 @@
     state: present
     reload: true
 
-- name: Create "{{ wireguard_directory }}" directory
+- name: Create directory: "{{ wireguard_directory }}"
   ansible.builtin.file:
     path: "{{ wireguard_directory }}"
     state: directory

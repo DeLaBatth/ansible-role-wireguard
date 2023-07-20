@@ -32,6 +32,6 @@
 
 - name: Add server PrivateKey to config file
   ansible.builtin.lineinfile:
-    path: /etc/wireguard/"{{wireguard_interface}}".conf
+    path: /etc/wireguard/"{{ wireguard_interface }}".conf
     regexp: "^PrivateKey"
     line: "PrivateKey = {{ private_key.stdout }}"

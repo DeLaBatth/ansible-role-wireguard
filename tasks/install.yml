@@ -1,13 +1,13 @@
 ---
 # Install WireGuard server
 
-- name: [Install] Install WireGuard package
+- name: "[Install]" Install WireGuard package
   ansible.builtin.apt:
     update_cache: true
     name: wireguard
     state: present
 
-- name: [Install] Enable IP forwarding
+- name: "[Install]" Enable IP forwarding
   ansible.posix.sysctl:
     name: net.ipv4.ip_forward
     value: '1'
@@ -15,7 +15,7 @@
     state: present
     reload: true
 
-- name: [Install] Create directory "{{ wireguard_directory }}"
+- name: "[Install]" Create directory "{{ wireguard_directory }}"
   ansible.builtin.file:
     path: "{{ wireguard_directory }}"
     state: directory

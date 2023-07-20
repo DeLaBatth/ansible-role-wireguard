@@ -7,7 +7,7 @@
     cmd: wg show
   register: wg_output
 
-- ansible.builtin.debug:
+- ansible.builtin.debug: Debug WireGuard interface
     msg: "{{ wg_output }}"
   ignore_errors: true
 

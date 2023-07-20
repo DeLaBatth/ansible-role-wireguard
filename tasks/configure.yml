@@ -4,6 +4,7 @@
 - name: Show WireGuard Interfaces
   ansible.builtin.command: wg show
   register: wg_output
+  changed_when: false
 
 # - ansible.builtin.debug:
 #     msg: "{{ wg_output }}"
@@ -28,6 +29,7 @@
 - name: Get server Private Key
   ansible.builtin.command: cat {{ wireguard_directory }}/privatekey
   register: private_key
+  changed_when: false
 
 - name: Add server PrivateKey to config file
   ansible.builtin.lineinfile:

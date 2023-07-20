@@ -4,6 +4,7 @@
 - name: Show WireGuard Interfaces
   ansible.builtin.command: wg show
   register: wg_output
+  changed_when: false
 
 # - ansible.builtin.debug:
 #     msg: "{{ wg_output }}"

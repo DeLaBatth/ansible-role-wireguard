@@ -2,8 +2,7 @@
 # Start WireGuard service
 
 - name: Show WireGuard Interfaces
-  ansible.builtin.shell:
-    cmd: wg show
+  ansible.builtin.command: wg show
   register: wg_output
 
 - ansible.builtin.debug:
@@ -16,8 +15,7 @@
 #   when: wg_output.stdout != ""
 
 - name: Stoping WireGuard service
-  ansible.builtin.shell:
-    cmd: wg-quick down "{{ wireguard_interface }}"
+  ansible.builtin.command: wg-quick down "{{ wireguard_interface }}"
   when: wg_output.stdout != ""
 
 - name: Starting WireGuard service

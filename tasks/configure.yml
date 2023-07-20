@@ -2,8 +2,7 @@
 # WireGuard server configuration tasks
 
 - name: Show WireGuard Interfaces
-  ansible.builtin.shell:
-    cmd: wg show
+  ansible.builtin.command: wg show
   register: wg_output
 
 # - ansible.builtin.debug:

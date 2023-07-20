@@ -5,9 +5,9 @@
   ansible.builtin.command: wg show
   register: wg_output
 
-- ansible.builtin.debug:
-    msg: "{{ wg_output }}"
-  ignore_errors: true
+# - ansible.builtin.debug:
+#     msg: "{{ wg_output }}"
+#   ignore_errors: true
 
 # - name: Restart WireGuard service if adding peers
 #   ansible.builtin.shell:

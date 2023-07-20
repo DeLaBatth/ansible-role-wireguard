@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: test role
+  hosts: localhost
   remote_user: root
   roles:
     - delabatth.ansible_role_wireguard

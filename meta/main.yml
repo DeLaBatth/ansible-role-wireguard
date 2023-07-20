@@ -3,7 +3,7 @@ dependencies: []
 
 galaxy_info:
   role_name: ansible_role_wireguard
-  author: DeLaBatth
+  author: delabatth
   description: Install WireGuard VPN server
   company: "None"
   license: "license (BSD, MIT)"

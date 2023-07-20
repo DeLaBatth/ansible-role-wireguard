@@ -1,7 +1,7 @@
 ---
 # Start WireGuard service
 
-- name: Show WireGuard Interfaces
+- name: Start - Show WireGuard Interfaces
   ansible.builtin.command: wg show
   register: wg_output
   changed_when: false
@@ -15,10 +15,15 @@
 #     cmd: systemctl restart wg-quick@wg0.service
 #   when: wg_output.stdout != ""
 
-- name: Stoping WireGuard service
+- name: Start - Stoping WireGuard service
   ansible.builtin.command: wg-quick down "{{ wireguard_interface }}"
   when: wg_output.stdout != ""
 
-- name: Starting WireGuard service
+- name: Start - Starting WireGuard service
   ansible.builtin.shell:
     cmd: wg-quick up "{{ wireguard_interface }}" && systemctl enable wg-quick@wg0.service
+
+- name: Start - Print WireGuard server PublicKey
+  ansible.builtin.command: cat {{ wireguard_directory }}/publickey
+  register: public_key
+  changed_when: false

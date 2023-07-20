@@ -25,5 +25,5 @@
 
 - name: Start - Print WireGuard server PublicKey
   ansible.builtin.command: cat {{ wireguard_directory }}/publickey
-  register: public_key.stdout
+  register: public_key
   changed_when: false

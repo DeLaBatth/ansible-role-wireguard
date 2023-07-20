@@ -1,6 +1,5 @@
 ---
 # Start WireGuard service
-# when: ('wg0' in wg_output.stdout_lines[0])
 
 - name: Show WireGuard Interfaces
   ansible.builtin.shell:
